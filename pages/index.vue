@@ -4,6 +4,9 @@
     class="pt-0 secondary"
   >
     <carousel />
+    <v-row>
+      <event-module :events="events" />
+    </v-row>
   </v-container>
 </template>
 
@@ -17,3 +20,15 @@
   height: calc(100vh - 64px);
 }
 </style>
+
+<script>
+  export default {
+    async asyncData ({ $content }) {
+      const events = await $content('events').fetch()
+      console.log(events)
+      return {
+        events,
+      }
+    },
+  }
+</script>
